@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
 using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypeDetails
@@ -17,7 +18,9 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
         public async Task<LeaveTypeDetaislDto> Handle(GetLeaveTypeDetailsQuery request, CancellationToken cancellationToken)
         {
             // Query the dateabase
-            var leaveTypes = await _leaveTypeRepository.GetByIdAsync(request.Id);
+            var leaveTypes = await _leaveTypeRepository.GetByIdAsync(request.Id) ?? 
+                throw new NotFoundException(nameof(LeaveType),request.Id);
+        
             // convert data object to DTO objects
             var data = _mapper.Map<LeaveTypeDetaislDto>(leaveTypes);
             // return list of DTO object
