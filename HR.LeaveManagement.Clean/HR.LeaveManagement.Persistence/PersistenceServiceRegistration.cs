@@ -18,7 +18,7 @@ public static class PersistenceServiceRegistration
     {
         services.AddDbContext<HrDatabaseContext>(options => 
         {
-            options.UseSqlServer(configuration.GetConnectionString("HrDatabaseMysqlConnectionString"));
+            options.UseMySQL(configuration.GetConnectionString("HrDatabaseMysqlConnectionString"));
             //options.UseSqlServer(configuration.GetConnectionString("HrDatabaseMssqlConnectionString"));
         });
 
