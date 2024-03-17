@@ -30,7 +30,7 @@ namespace HR.LeaveManagement.Persistence.Repositories
                 .FirstOrDefaultAsync(p => p.EmployeeId == userId && p.LeaveTypeId == leaveTypeId);
         }
 
-        public async Task<LeaveAllocation> GetLeaveAllocationWidthDetail(int id)
+        public async Task<LeaveAllocation> GetLeaveAllocationWithDetails(int id)
         {
             var leaveAllocation = await _context.LeaveAllocations
                 .Include(p => p.LeaveType)
@@ -39,7 +39,7 @@ namespace HR.LeaveManagement.Persistence.Repositories
             return leaveAllocation;
         }
 
-        public async Task<List<LeaveAllocation>> GetLeaveAllocationWidthDetail()
+        public async Task<List<LeaveAllocation>> GetLeaveAllocationsWithDetails()
         {
             var leaveAllocations = await _context.LeaveAllocations
                 .Include(p => p.LeaveType)
@@ -48,7 +48,7 @@ namespace HR.LeaveManagement.Persistence.Repositories
             return leaveAllocations;
         }
 
-        public async Task<List<LeaveAllocation>> GetLeaveAllocationWidthDetail(string userId)
+        public async Task<List<LeaveAllocation>> GetLeaveAllocationsWithDetails(string userId)
         {
             var leaveAllocations = await _context.LeaveAllocations
                 .Where(p => p.EmployeeId == userId)
