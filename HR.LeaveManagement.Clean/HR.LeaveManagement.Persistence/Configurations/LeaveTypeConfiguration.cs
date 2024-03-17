@@ -19,7 +19,7 @@ namespace HR.LeaveManagement.Persistence.Configurations
                 {
                     Id = 1,
                     Name = "Vacation",
-                    DefaltDays = 10,
+                    DefaultDays = 10,
                     DateCreated = DateTime.Now,
                     DateModified = DateTime.Now
                 }

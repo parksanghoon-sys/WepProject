@@ -22,7 +22,7 @@ namespace HR.LeaveManagement.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    DefaltDays = table.Column<int>(type: "int", nullable: false),
+                    DefaultDays = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DateModified = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
@@ -88,8 +88,8 @@ namespace HR.LeaveManagement.Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
-                columns: new[] { "Id", "DateCreated", "DateModified", "DefaltDays", "Name" },
-                values: new object[] { 1, new DateTime(2024, 3, 14, 23, 4, 14, 897, DateTimeKind.Local).AddTicks(6352), new DateTime(2024, 3, 14, 23, 4, 14, 897, DateTimeKind.Local).AddTicks(6364), 10, "Vacation" });
+                columns: new[] { "Id", "DateCreated", "DateModified", "DefaultDays", "Name" },
+                values: new object[] { 1, new DateTime(2024, 3, 17, 21, 9, 32, 24, DateTimeKind.Local).AddTicks(9261), new DateTime(2024, 3, 17, 21, 9, 32, 24, DateTimeKind.Local).AddTicks(9273), 10, "Vacation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveAllocations_LeaveTypeId",

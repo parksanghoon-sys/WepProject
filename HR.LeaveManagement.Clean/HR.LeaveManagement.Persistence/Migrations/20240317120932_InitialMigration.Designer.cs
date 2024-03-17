@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.LeaveManagement.Persistence.Migrations
 {
     [DbContext(typeof(HrDatabaseContext))]
-    [Migration("20240314140414_InitialMigration")]
+    [Migration("20240317120932_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -110,7 +110,7 @@ namespace HR.LeaveManagement.Persistence.Migrations
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("DefaltDays")
+                    b.Property<int>("DefaultDays")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -126,9 +126,9 @@ namespace HR.LeaveManagement.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 3, 14, 23, 4, 14, 897, DateTimeKind.Local).AddTicks(6352),
-                            DateModified = new DateTime(2024, 3, 14, 23, 4, 14, 897, DateTimeKind.Local).AddTicks(6364),
-                            DefaltDays = 10,
+                            DateCreated = new DateTime(2024, 3, 17, 21, 9, 32, 24, DateTimeKind.Local).AddTicks(9261),
+                            DateModified = new DateTime(2024, 3, 17, 21, 9, 32, 24, DateTimeKind.Local).AddTicks(9273),
+                            DefaultDays = 10,
                             Name = "Vacation"
                         });
                 });
