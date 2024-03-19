@@ -4,11 +4,6 @@ using HR.LeaveManagement.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Persistence;
 
@@ -26,7 +21,7 @@ public static class PersistenceServiceRegistration
 
         services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
         services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
-        services.AddScoped<ILeaveRequesetRepository, LeaveRequestRepository>();
+        services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
         return services;
     }
 }

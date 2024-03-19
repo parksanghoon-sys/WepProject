@@ -14,7 +14,7 @@ namespace HR.LeaveManagement.Infrastructure.EmailService
         {
             _emailSettings = emilaSettings.Value;
         }
-        public async Task<bool> SendEmial(EamilMessage email)
+        public async Task<bool> SendEmail(EmailMessage email)
         {
             var client = new SendGridClient(_emailSettings.ApiKey);
             var to = new EmailAddress(email.To);
