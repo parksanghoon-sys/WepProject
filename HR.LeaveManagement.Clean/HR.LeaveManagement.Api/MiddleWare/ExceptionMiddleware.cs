@@ -30,7 +30,7 @@ namespace HR.LeaveManagement.Api.MiddleWare
         private async Task HandleExceptionAsync(HttpContext httpContext, Exception ex)
         {
             HttpStatusCode statusCode = HttpStatusCode.InternalServerError;
-            CustomProblemDetails problem = new CustomProblemDetails();
+            CustomProblemDetails problem;
 
             switch (ex)
             {
