@@ -32,7 +32,6 @@
     <Folder Include="Features\LeaveTypes\" />
     <Folder Include="Features\LeaveAllocation\" />
     <Folder Include="Features\LeaveRequests\" />
-    <Folder Include="Mocks\" />
   </ItemGroup>
 
 </Project>
