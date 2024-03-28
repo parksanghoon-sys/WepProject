@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\LeaveTypes\" />
     <Folder Include="Features\LeaveAllocation\" />
     <Folder Include="Features\LeaveRequests\" />
   </ItemGroup>
