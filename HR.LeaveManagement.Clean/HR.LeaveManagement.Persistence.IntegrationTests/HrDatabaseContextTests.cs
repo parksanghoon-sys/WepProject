@@ -9,7 +9,6 @@ namespace HR.LeaveManagement.Persistence.IntegrationTests
     public class HrDatabaseContextTests
     {
         private HrDatabaseContext _hrDatabaseContext;
-        private readonly string _userId;
 
         public HrDatabaseContextTests()
         {
