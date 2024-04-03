@@ -1,0 +1,58 @@
+﻿@page "/form"
+@inherits MvvmComponentBase<EditContactViewModel>
+
+<EditForm Model="ViewModel.Contact">
+    <MvvmValidationSummary Context="ViewModel.Contact"/>
+    <div class="row g-3">
+        <div class="col-12">
+            <label class="form-label">Name :</label>
+            <InputText @bind-Value="ViewModel.Contact.Name" class="form-control" placeholder="Some Name"></InputText>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Email :</label>
+            <InputText @bind-Value="ViewModel.Contact.Email" class="form-control" placeholder="user@domain.tld"></InputText>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Name :</label>
+            <InputText @bind-Value="ViewModel.Contact.PhoneNumber" class="form-control" placeholder="555-1212" ></InputText>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row">
+        <button class="btn btn-primary btn-lg col" type="submit" @onclick="() => ViewModel.SaveCommand.Execute(null)" disabled="@(ViewModel.Contact.HasErrors)">
+            Save
+        </button>
+        <button class="btn btn-secondary btn-lg col" type="submit" @onclick="() => ViewModel.ClearFormCommand.Execute(null)">
+            Clear Form
+        </button>
+    </div>
+    <hr class="my-4">
+    @if (ViewModel.ContactInfos.Any() == false)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Pone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in ViewModel.ContactInfos)
+                {
+                    <tr>
+                        <td>@contact.Name</td>
+                        <td>@contact.Email</td>
+                        <td>@contact.PhoneNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</EditForm>
