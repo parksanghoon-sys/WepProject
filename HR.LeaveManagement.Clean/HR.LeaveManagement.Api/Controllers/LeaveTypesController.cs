@@ -42,7 +42,7 @@ namespace HR.LeaveManagement.Api.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> Post(CreateLeaveTypeCommand leaveType)
+        public async Task<ActionResult<int>> Post(CreateLeaveTypeCommand leaveType)
         {
             var response = await _mediator.Send(leaveType);
             return CreatedAtAction(nameof(Get), new { id = response });
