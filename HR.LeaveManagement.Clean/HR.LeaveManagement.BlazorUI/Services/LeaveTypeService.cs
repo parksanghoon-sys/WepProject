@@ -65,7 +65,7 @@ namespace HR.LeaveManagement.BlazorUI.Services
                 return ConvertApiExceptions<Guid>(ex);
             }
         }
-        public async Task<List<LeaveTypeVM>> GetLeaveType()
+        public async Task<List<LeaveTypeVM>> GetLeaveTypes()
         {
             var leaveTypes = await _client.LeaveTypesAllAsync();
             return _mapper.Map<List<LeaveTypeVM>>(leaveTypes);            

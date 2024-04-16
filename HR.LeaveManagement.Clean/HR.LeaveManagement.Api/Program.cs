@@ -34,7 +34,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+// 모든사용자가 통시가능하도록 파이프라인 연결위함
+app.UseCors("all");
 app.UseAuthorization();
 
 app.MapControllers();
