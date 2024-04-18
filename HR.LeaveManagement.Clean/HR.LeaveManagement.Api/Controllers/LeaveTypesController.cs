@@ -4,7 +4,6 @@ using HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeaveType
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypeDetails;
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.Api.Controllers

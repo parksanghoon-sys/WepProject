@@ -2,7 +2,6 @@
 using HR.LeaveManagement.BlazorUI.Contracts;
 using HR.LeaveManagement.BlazorUI.Models.LeaveRequest;
 using HR.LeaveManagement.BlazorUI.Services.Base;
-using System.Net.NetworkInformation;
 
 namespace HR.LeaveManagement.BlazorUI.Services
 {
