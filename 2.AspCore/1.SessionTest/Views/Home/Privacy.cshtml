@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using _1.SessionTest.Models;
+@using _1.SessionTest.Helpers;
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h3>Session Page</h3>
+    Age: @Context.Session.GetInt32("age")
+<br />
+    Username: @Context.Session.GetString("username")
+<h3>Product Info</h3>
+@{
+    Product product = Context.Session.Get<Product>("product");
+}
+    Id: @product.Id
+<br />
+    Name: @product.Name
+<br />
+    Price: @product.Price
+
+<h3>Product List</h3>
+@{
+    List<Product> products = Context.Session.Get<List<Product>>("products");
+}
+@foreach (var p in products)
+{
+    <div>
+        Id: @p.Id
+        <br />
+        Name: @p.Name
+        <br />
+        Price: @p.Price
+        <br />
+        ==================
+        <br />
+    </div>
+}
+<table class="table table-responsive">
+    <tr>
+        <th>Name</th>
+        <th>Fiscal Year</th>
+    </tr>
+    <tr>
+        <td>@ViewBag.Name</td>
+        <td>@ViewBag.FY</td>
+    </tr>
+</table>
+<label>Date : @(ViewBag.Date.ToString("dd/MM/yyyy") != "01/01/0001" ? ViewBag.Date.ToString("dd/MM/yyyy") : "")</label>
