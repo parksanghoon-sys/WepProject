@@ -4,14 +4,12 @@ using HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeaveType
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypeDetails;
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class LeaveTypesController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -42,7 +40,7 @@ namespace HR.LeaveManagement.Api.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> Post(CreateLeaveTypeCommand leaveType)
+        public async Task<ActionResult<int>> Post(CreateLeaveTypeCommand leaveType)
         {
             var response = await _mediator.Send(leaveType);
             return CreatedAtAction(nameof(Get), new { id = response });
