@@ -1,5 +1,6 @@
 using HR.LeaveManagement.Api.MiddleWare;
 using HR.LeaveManagement.Application;
+using HR.LeaveManagement.Identity;
 using HR.LeaveManagement.Infrastructure;
 using HR.LeaveManagement.Persistence;
 
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceService(builder.Configuration);
+builder.Services.AddIdentityService(builder.Configuration);
 
 builder.Services.AddControllers();
 
@@ -36,6 +38,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 // 모든사용자가 통시가능하도록 파이프라인 연결위함
 app.UseCors("all");
+
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
