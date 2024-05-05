@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Blazored.LocalStorage;
 using HR.LeaveManagement.BlazorUI.Contracts;
 using HR.LeaveManagement.BlazorUI.Models.LeaveRequest;
 using HR.LeaveManagement.BlazorUI.Services.Base;
@@ -8,11 +9,13 @@ namespace HR.LeaveManagement.BlazorUI.Services
     public class LeaveRequestService : BaseHttpService, ILeaveRequestService
     {
         private readonly IMapper _mapper;
+        private readonly ILocalStorageService _localStorageService;
 
-        public LeaveRequestService(IClient client, IMapper mapper)
-            : base(client)
+        public LeaveRequestService(IClient client, IMapper mapper, ILocalStorageService localStorageService)
+            : base(client, localStorageService)
         {
             _mapper = mapper;
+            _localStorageService = localStorageService;
         }
 
         public async Task<Response<Guid>> ApproveLeaveRequest(int id, bool approved)

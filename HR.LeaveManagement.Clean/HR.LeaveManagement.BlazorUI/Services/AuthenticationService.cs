@@ -1,27 +1,59 @@
-﻿using HR.LeaveManagement.BlazorUI.Contracts;
+﻿using Blazored.LocalStorage;
+using HR.LeaveManagement.BlazorUI.Contracts;
+using HR.LeaveManagement.BlazorUI.Providers;
 using HR.LeaveManagement.BlazorUI.Services.Base;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace HR.LeaveManagement.BlazorUI.Services
 {
     public class AuthenticationService : BaseHttpService, IAuthenticationService
-    {        
-        public AuthenticationService(IClient client) : base(client)
+    {
+        private readonly AuthenticationStateProvider _authenticationStateProvider;
+        public AuthenticationService(IClient client, ILocalStorageService localStorageService, AuthenticationStateProvider authenticationStateProvider) 
+            : base(client, localStorageService)
         {
+            _authenticationStateProvider = authenticationStateProvider;
         }
 
-        public Task<bool> AuthenticateAsync(string email, string password)
+        public async Task<bool> AuthenticateAsync(string email, string password)
         {
-            throw new NotImplementedException();
+            try
+            {
+                AuthRequest authRequest = new AuthRequest() { Email = email, Password = password };
+                var authenticationResoponse = await _client.LoginAsync(authRequest);
+                if (authenticationResoponse.Token != string.Empty)
+                {
+                    await _localStorage.SetItemAsync("token", authenticationResoponse.Token);
+                    // Set claims in Blazor and Login state
+                    await ((ApiAuthenticationStateProvider)_authenticationStateProvider).LoggedIn();
+
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;                
+            }
+         
         }
 
-        public Task Logout()
+        public async Task Logout()
         {
-            throw new NotImplementedException();
+            //await _localStorage.RemoveItemAsync("token");
+            // Remove claims in Blazor and Login state
+            await ((ApiAuthenticationStateProvider)_authenticationStateProvider).LoggedOut();
         }
 
-        public Task<bool> RegisterAsync(string firstName, string lastName, string userName, string email, string password)
+        public async Task<bool> RegisterAsync(string firstName, string lastName, string userName, string email, string password)
         {
-            throw new NotImplementedException();
+            RegistrationRequest registrationRequest = new RegistrationRequest() { FirstName = firstName, LastName = lastName, UserName = userName, Email = email, };
+            var resopnse = await _client.RegisterAsync(registrationRequest);
+            if(string.IsNullOrEmpty(resopnse.UserId) == false)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

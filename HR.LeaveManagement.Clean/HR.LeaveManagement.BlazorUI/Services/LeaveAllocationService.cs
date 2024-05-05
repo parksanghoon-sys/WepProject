@@ -1,13 +1,17 @@
-﻿using HR.LeaveManagement.BlazorUI.Contracts;
+﻿using Blazored.LocalStorage;
+using HR.LeaveManagement.BlazorUI.Contracts;
 using HR.LeaveManagement.BlazorUI.Services.Base;
 
 namespace HR.LeaveManagement.BlazorUI.Services
 {
     public class LeaveAllocationService : BaseHttpService, ILeaveAllocationService
     {
-        public LeaveAllocationService(IClient client)
-            : base(client)
+        private readonly ILocalStorageService _localStorageService;
+
+        public LeaveAllocationService(IClient client, ILocalStorageService localStorageService)
+            : base(client, localStorageService)
         {
+            _localStorageService = localStorageService;
         }
 
         public async Task<Response<Guid>> CreateLeaveAllocations(int leaveTypeId)
