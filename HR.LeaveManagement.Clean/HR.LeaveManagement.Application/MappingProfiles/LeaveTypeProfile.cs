@@ -16,7 +16,6 @@ namespace HR.LeaveManagement.Application.MappingProfiles
             CreateMap<LeaveType, LeaveTypeDetailsDto>();
             CreateMap<CreateLeaveTypeCommand, LeaveType>();
             CreateMap<UpdateLeaveTypeCommand, LeaveType>();
-            CreateMap<DeleteLeaveTypeCommand, LeaveType>();
         }
     }
 }
