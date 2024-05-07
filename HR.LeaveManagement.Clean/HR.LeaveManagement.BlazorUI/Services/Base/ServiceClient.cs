@@ -2233,8 +2233,8 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("defaltDays")]
-        public int DefaltDays { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("defaultDays")]
+        public int DefaultDays { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("dateCreated")]
         public System.DateTimeOffset? DateCreated { get; set; }
@@ -2254,8 +2254,8 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("defaltDays")]
-        public int DefaltDays { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("defaultDays")]
+        public int DefaultDays { get; set; }
 
     }
 
