@@ -20,6 +20,7 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
         }
         protected void AllocateLeaveType(int id)
         {
+            LeaveAllocationService.CreateLeaveAllocations(id);
         }
 
         protected void EditLeaveType(int id)
