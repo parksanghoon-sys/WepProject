@@ -25,15 +25,19 @@ namespace HR.LeaveManagement.Identity.Services
         public async Task<AuthResponse> Login(AuthRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
+
             if (user == null)
             {
-                throw new NotFoundException($"User with {request.Email} not found", request.Email);
+                throw new NotFoundException($"User with {request.Email} not found.", request.Email);
             }
+
             var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+
             if (result.Succeeded == false)
             {
                 throw new BadRequestException($"Credentials for '{request.Email} aren't valid'.");
             }
+
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
 
             var response = new AuthResponse
@@ -43,6 +47,7 @@ namespace HR.LeaveManagement.Identity.Services
                 Email = user.Email,
                 UserName = user.UserName
             };
+
             return response;
         }
         public async Task<RegistrationResponse> Register(RegistrationRequest request)
