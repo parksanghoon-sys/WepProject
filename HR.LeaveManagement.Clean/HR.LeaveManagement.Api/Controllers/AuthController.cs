@@ -9,21 +9,23 @@ namespace HR.LeaveManagement.Api.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthService _authService;
+        private readonly IAuthService _authenticationService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authenticationService)
         {
-            _authService = authService;
+            this._authenticationService = authenticationService;
         }
-        [HttpPost("Login")]
+
+        [HttpPost("login")]
         public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
         {
-            return Ok(await _authService.Login(request));
+            return Ok(await _authenticationService.Login(request));
         }
+
         [HttpPost("register")]
         public async Task<ActionResult<RegistrationResponse>> Register(RegistrationRequest request)
         {
-            return Ok(await _authService.Register(request));
+            return Ok(await _authenticationService.Register(request));
         }
     }
 }

@@ -19,14 +19,13 @@ namespace HR.LeaveManagement.Identity
 {
     public static class IdentityServicesRegistration
     {
-        public static IServiceCollection AddIdentityService(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+
             services.AddDbContext<HrLeaveManagementIdentityDbContext>(options =>
-            {
-                options.UseMySQL(configuration.GetConnectionString("HrDatabaseMysqlConnectionString"));
-                //options.UseSqlServer(configuration.GetConnectionString("HrDatabaseMssqlConnectionString"));
-            });            
+               options.UseMySQL(configuration.GetConnectionString("HrDatabaseMysqlConnectionString")));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<HrLeaveManagementIdentityDbContext>().AddDefaultTokenProviders();
 
@@ -37,9 +36,9 @@ namespace HR.LeaveManagement.Identity
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer( o =>
+            }).AddJwtBearer(o =>
             {
-                o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                o.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     ValidateIssuer = true,
@@ -49,8 +48,10 @@ namespace HR.LeaveManagement.Identity
                     ValidIssuer = configuration["JwtSettings:Issuer"],
                     ValidAudience = configuration["JwtSettings:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
+
                 };
             });
+
             return services;
         }
     }

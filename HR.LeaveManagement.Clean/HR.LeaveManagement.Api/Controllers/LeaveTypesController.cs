@@ -11,6 +11,7 @@ namespace HR.LeaveManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Roles = "Administrator")]
     [Authorize]
     public class LeaveTypesController : ControllerBase
     {

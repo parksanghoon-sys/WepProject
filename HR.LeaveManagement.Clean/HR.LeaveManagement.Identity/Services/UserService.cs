@@ -28,7 +28,7 @@ namespace HR.LeaveManagement.Identity.Services
                 Email = employee.Email,
                 Id = employee.Id,
                 Firstname = employee.FirstName,
-                Lastname = employee.LastName,
+                Lastname = employee.LastName
             };
         }
 

@@ -16,12 +16,16 @@ namespace HR.LeaveManagement.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JwtSettings _jwtSettings;
-        public AuthService(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings)
+
+        public AuthService(UserManager<ApplicationUser> userManager,
+            IOptions<JwtSettings> jwtSettings,
+            SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _jwtSettings = jwtSettings.Value;
+            _signInManager = signInManager;
         }
+
         public async Task<AuthResponse> Login(AuthRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
@@ -50,6 +54,8 @@ namespace HR.LeaveManagement.Identity.Services
 
             return response;
         }
+
+
         public async Task<RegistrationResponse> Register(RegistrationRequest request)
         {
             var user = new ApplicationUser
@@ -109,5 +115,6 @@ namespace HR.LeaveManagement.Identity.Services
                signingCredentials: signingCredentials);
             return jwtSecurityToken;
         }
+
     }
 }
