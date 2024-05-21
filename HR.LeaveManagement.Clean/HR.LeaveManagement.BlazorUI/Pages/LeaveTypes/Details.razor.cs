@@ -16,7 +16,7 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
 
         protected async override Task OnParametersSetAsync()
         {
-            leaveType = await _client.GetLeaveTypeDetail(id);
+            leaveType = await _client.GetLeaveTypeDetails(id);
         }
     }
 }

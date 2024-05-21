@@ -1,0 +1,116 @@
+﻿@page "/leaverequests/employeeindex"
+@using HR.LeaveManagement.BlazorUI.Contracts
+@using HR.LeaveManagement.BlazorUI.Models.LeaveRequest
+@inject ILeaveRequestService leaveRequestService
+@inject IJSRuntime js
+@inject NavigationManager NavigationManager
+<h1>Leave Request Log</h1>
+<hr/>
+
+@if(string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+<table id="tblData" class="table">
+    <thead>
+        <tr>
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                End Date
+            </th>
+            <th>
+                Leave Type
+            </th>
+            <th>
+                Date Requested
+            </th>
+
+            <th>
+                Approval Status
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.LeaveRequests)
+        {
+            <tr>
+                <td>
+                    @item.Employee.Firstname @item.Employee.Lastname
+                </td>
+                <td>
+                    @item.StartDate.Value.ToString("yyyy-MM-dd")
+                </td>
+                <td>
+                    @item.EndDate.Value.ToString("yyyy-MM-dd")
+                </td>
+                <td>
+                    @item.LeaveType.Name
+                </td>
+                <td>
+                    @item.DateRequested.ToString("yyyy-MM-dd")
+                </td>
+                <td>
+                    @if(item.Cancelled)
+                    {
+                        <span class="badge bg-secondary">Cancelled</span>
+                    }
+                    else if(item.Approved == true)
+                    {
+                        <span class="badge bg-success">Appreoved</span>
+                    }
+                    else if(item.Approved == false)
+                    {
+                        <span class="badge bg-danger">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                </td>
+                <td>
+                    @if(item.Cancelled == false)
+                    {
+                        <button class="btn btn-danger" @onclick="(()=> CancelRequsetAsync(item.Id))">
+                            <i class="fade fa-file"></i>Cancel Request
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code{
+    public string Message {get; set;} = string.Empty;
+    public EmployeeLeaveRequestViewVM Model { get; set; } = new();
+    protected async override Task OnInitializedAsync()
+    {
+        Model = await leaveRequestService.GetUserLeaveRequests();
+    }
+    private async Task CancelRequsetAsync(int id)
+    {
+        var confirm = await js.InvokeAsync<bool>("confirm", "Do you want to cancel this request?");
+        if (confirm)
+        {
+            var response = await leaveRequestService.CancelLeaveRequest(id);
+            if (response.IsSuccess)
+            {
+                StateHasChanged();
+            }
+            else
+            {
+                Message = response.Message;
+            }
+        }
+    }
+}

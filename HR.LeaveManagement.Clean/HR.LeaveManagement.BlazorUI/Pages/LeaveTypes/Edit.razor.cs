@@ -16,7 +16,7 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
         LeaveTypeVM leaveType = new LeaveTypeVM();
         protected override async Task OnParametersSetAsync()
         {
-            leaveType = await _leaveTypeService.GetLeaveTypeDetail(id);
+            leaveType = await _leaveTypeService.GetLeaveTypeDetails(id);
         }
         private async Task EditLeaveType()
         {

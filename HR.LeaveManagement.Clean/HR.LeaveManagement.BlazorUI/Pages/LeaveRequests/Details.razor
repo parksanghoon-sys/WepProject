@@ -1,0 +1,102 @@
+﻿@page "/leaverequests/details/{id:int}"
+@using HR.LeaveManagement.BlazorUI.Contracts
+@using HR.LeaveManagement.BlazorUI.Models.LeaveRequest
+@inject ILeaveRequestService leaveRequestService
+@inject NavigationManager navigationManager
+
+@code
+{
+    [Parameter]
+    public int id { get; set; }
+
+    private string ClassName;
+    private string HeadingText;
+    public LeaveRequestVM Model { get; private set; } = new LeaveRequestVM();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Model = await leaveRequestService.GetLeaveRequest(id);
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        if (Model.Approved == null)
+        {
+            ClassName = "warning";
+            HeadingText = "Pending Approval";
+        }
+        else if (Model.Approved == true)
+        {
+            ClassName = "success";
+            HeadingText = "Approved";
+        }
+        else
+        {
+            ClassName = "danger";
+            HeadingText = "Rejected";
+        }
+    }
+    private async Task ChangeApproval(bool approvalStatus)
+    {
+        await leaveRequestService.ApproveLeaveRequest(id, approvalStatus);
+        navigationManager.NavigateTo("/leaverequests/");
+    }
+}
+<h3>Details</h3>
+
+
+<div class="alert alert-@ClassName" role="alert">
+    <h4 class="alert-heading">@HeadingText</h4>
+    <p>
+        <strong>Employee name:</strong> @Model.Employee.Firstname @Model.Employee.Lastname <br />
+    </p>
+    <hr />
+    <p>
+        Date Requested - @Model.DateRequested
+    </p>
+</div>
+
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Start Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.StartDate
+        </dd>
+        <dt class="col-sm-2">
+            End Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EndDate
+        </dd>
+        <dt class="col-sm-2">
+            Leave Type
+        </dt>
+        <dd class="col-sm-10">
+            @Model.LeaveType.Name
+        </dd>
+        <dt class="col-sm-2">
+            Request Comments
+        </dt>
+        <dd class="col-sm-10">
+            @Model.RequestComments
+        </dd>
+    </dl>
+</div>
+<div>
+
+    @if (Model.Approved == null)
+    {
+        <button class="btn btn-success" @onclick="(() => ChangeApproval(true))">
+            Approve
+        </button>
+        <button class="btn btn-danger" @onclick="(() => ChangeApproval(false))">
+            Reject
+        </button>
+    }
+    <BackToList Target="leaverequests/" />
+   
+</div>

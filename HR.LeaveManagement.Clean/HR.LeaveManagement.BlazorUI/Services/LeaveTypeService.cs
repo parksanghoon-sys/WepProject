@@ -9,13 +9,10 @@ namespace HR.LeaveManagement.BlazorUI.Services
     public class LeaveTypeService : BaseHttpService, ILeaveTypeService
     {
         private readonly IMapper _mapper;
-        private readonly ILocalStorageService _localStorageService;
 
-        public LeaveTypeService(IClient client, IMapper mapper, ILocalStorageService localStorageService) 
-            : base(client, localStorageService)
+        public LeaveTypeService(IClient client, IMapper mapper, ILocalStorageService localStorageService) : base(client, localStorageService)
         {
-            _mapper = mapper;
-            _localStorageService = localStorageService;
+            this._mapper = mapper;
         }
 
         public async Task<Response<Guid>> CreateLeaveType(LeaveTypeVM leaveType)
@@ -32,9 +29,9 @@ namespace HR.LeaveManagement.BlazorUI.Services
             }
             catch (ApiException ex)
             {
-                return ConvertApiExceptions<Guid>(ex);           
+
+                return ConvertApiExceptions<Guid>(ex);
             }
-            
         }
 
         public async Task<Response<Guid>> DeleteLeaveType(int id)
@@ -42,17 +39,29 @@ namespace HR.LeaveManagement.BlazorUI.Services
             try
             {
                 await AddBearerToken();
-                await _client.LeaveTypesDELETEAsync(id);                
-                return new Response<Guid>()
-                {
-                    IsSuccess = true,
-                };
+                await _client.LeaveTypesDELETEAsync(id);
+                return new Response<Guid>() { IsSuccess = true };
             }
             catch (ApiException ex)
             {
                 return ConvertApiExceptions<Guid>(ex);
             }
         }
+
+        public async Task<LeaveTypeVM> GetLeaveTypeDetails(int id)
+        {
+            await AddBearerToken();
+            var leaveType = await _client.LeaveTypesGETAsync(id);
+            return _mapper.Map<LeaveTypeVM>(leaveType);
+        }
+
+        public async Task<List<LeaveTypeVM>> GetLeaveTypes()
+        {
+            await AddBearerToken();
+            var leaveTypes = await _client.LeaveTypesAllAsync();
+            return _mapper.Map<List<LeaveTypeVM>>(leaveTypes);
+        }
+
         public async Task<Response<Guid>> UpdateLeaveType(int id, LeaveTypeVM leaveType)
         {
             try
@@ -67,24 +76,8 @@ namespace HR.LeaveManagement.BlazorUI.Services
             }
             catch (ApiException ex)
             {
-
                 return ConvertApiExceptions<Guid>(ex);
             }
         }
-        public async Task<List<LeaveTypeVM>> GetLeaveTypes()
-        {
-            await AddBearerToken();
-            var leaveTypes = await _client.LeaveTypesAllAsync();
-            return _mapper.Map<List<LeaveTypeVM>>(leaveTypes);            
-        }
-
-        public async Task<LeaveTypeVM> GetLeaveTypeDetail(int id)
-        {
-            await AddBearerToken();
-            var leaveType = await _client.LeaveTypesGETAsync(id);
-            return _mapper.Map<LeaveTypeVM>(leaveType);
-        }
-
-
     }
 }
