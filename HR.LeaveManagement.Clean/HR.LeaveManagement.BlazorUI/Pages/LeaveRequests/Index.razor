@@ -1,17 +1,20 @@
 ﻿@page "/leaverequests/"
-
 <h3>Index</h3>
 
 <div class="m-2 d-flex justify-content-end">
     <a href="/leaverequests/create" class="btn btn-success">Add Leave Request</a>
 </div>
 
+
 <div class="row">
     <div class="col-md-3">
         <div class="card text-white bg-info" style="width: 18rem;">
-            <h5 class="card-title">Total Requests</h5>
-            <p class="card-text">@Model.TotalRequests</p>
+            <div class="card-body">
+                <h5 class="card-title">Total Requests</h5>
+                <p class="card-text">@Model.TotalRequests</p>
+            </div>
         </div>
+
     </div>
     <div class="col-md-3">
         <div class="card text-white bg-warning" style="width: 18rem;">
@@ -39,14 +42,13 @@
     </div>
 </div>
 
-<br/>
-<br/>
+<br />
+<br />
 
-<hr/>
+<hr />
 <h1>Leave Request Log</h1>
-<hr/>
-
-<table id="tdlData" class="table">
+<hr />
+<table id="tblData" class="table">
     <thead>
         <tr>
             <th>
@@ -123,4 +125,3 @@
         }
     </tbody>
 </table>
-
