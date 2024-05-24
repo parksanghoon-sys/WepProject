@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-
+using HR.LeaveManagement.Application.Features.LeaveAllocation.Queries.GetLeaveAllocationDetails;
 using HR.LeaveManagement.BlazorUI.Models;
 using HR.LeaveManagement.BlazorUI.Models.LeaveAllocations;
 using HR.LeaveManagement.BlazorUI.Models.LeaveRequest;
@@ -17,24 +17,31 @@ namespace HR.LeaveManagement.BlazorUI.MappingProfiles
             CreateMap<CreateLeaveTypeCommand,LeaveTypeVM>().ReverseMap();
             CreateMap<UpdateLeaveTypeCommand,LeaveTypeVM>().ReverseMap();
 
-            //CreateMap<LeaveRequestListDto, LeaveRequestVM>()
-            //    .ForMember(q => q.DateRequested, opt => opt.MapFrom(x => x.DateRequested.DateTime))
-            //    .ForMember(q => q.StartDate, opt => opt.MapFrom(x => x.StartDate.DateTime))
-            //    .ForMember(q => q.EndDate, opt => opt.MapFrom(x => x.EndDate.DateTime))
-            //    .ReverseMap();
+            //CreateMap<LeaveRequestListDto, LeaveRequestVM>().ReverseMap();
+            //CreateMap<LeaveRequestListDto, LeaveRequestVM>().ReverseMap();
 
-            //CreateMap<LeaveRequestDetailsDto, LeaveRequestVM>()
-            //    .ForMember(q => q.DateRequested, opt => opt.MapFrom(x => x.DateRequested.DateTime))
-            //    .ForMember(q => q.StartDate, opt => opt.MapFrom(x => x.StartDate.DateTime))
-            //    .ForMember(q => q.EndDate, opt => opt.MapFrom(x => x.EndDate.DateTime))
-            //    .ReverseMap();
+            CreateMap<LeaveRequestListDto, LeaveRequestVM>()
+                .ForMember(q => q.DateRequested, opt => opt.MapFrom(x => x.DateRequested.DateTime))
+                .ForMember(q => q.StartDate, opt => opt.MapFrom(x => x.StartDate.DateTime))
+                .ForMember(q => q.EndDate, opt => opt.MapFrom(x => x.EndDate.DateTime))
+                .ReverseMap();
 
-            CreateMap<CreateLeaveAllocationCommand, LeaveAllocationVM>().ReverseMap();
-            CreateMap<UpdateLeaveRequestCommand, LeaveRequestVM>().ReverseMap();
+            CreateMap<LeaveRequestDetailsDto, LeaveRequestVM>()
+                .ForMember(q => q.DateRequested, opt => opt.MapFrom(x => x.DateRequested.DateTime))
+                .ForMember(q => q.StartDate, opt => opt.MapFrom(x => x.StartDate.DateTime))
+                .ForMember(q => q.EndDate, opt => opt.MapFrom(x => x.EndDate.DateTime))
+                .ReverseMap();
+
 
 
             CreateMap<CreateLeaveRequestCommand, LeaveRequestVM>().ReverseMap();
             CreateMap<UpdateLeaveRequestCommand, LeaveRequestVM>().ReverseMap();
+
+            CreateMap<LeaveAllocationDto, LeaveAllocationVM>().ReverseMap();
+            CreateMap<LeaveAllocationDetailsDto, LeaveAllocationVM>().ReverseMap();
+            CreateMap<CreateLeaveAllocationCommand, LeaveAllocationVM>().ReverseMap();
+            CreateMap<UpdateLeaveRequestCommand, LeaveRequestVM>().ReverseMap();
+
             CreateMap<EmployeeVM, Employee>().ReverseMap();
         }
     }
