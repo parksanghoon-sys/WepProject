@@ -1,0 +1,29 @@
+﻿@page "/counter"
+@using BlazorBigexecutionExample.Components;
+
+<div class="content">
+    <h1>Counter</h1>
+    <p>Current count: @currentCount</p>
+    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+</div>
+
+@if (DeleteAlert)
+{
+    <LayerAlertComponent Value="@layerPopupComment" OnClose="@OnLayerAlertClose"></LayerAlertComponent>
+}
+@code {
+    private int currentCount = 0;
+    protected string layerPopupComment = string.Empty;
+    public bool DeleteAlert { get; set; }
+    private void IncrementCount()
+    {
+        currentCount++;
+        layerPopupComment = "숫자 1증가";
+        DeleteAlert = true;
+    }
+    protected void OnLayerAlertClose()
+    {
+        DeleteAlert = false;
+        StateHasChanged();
+    }
+}

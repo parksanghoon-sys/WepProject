@@ -1,0 +1,30 @@
+﻿@page "/universitydata";
+
+<h1>Universities of Korea</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (universities == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var university in universities.ToList())
+            {
+                <tr>
+                    <td>@university.name</td>
+                    <td>@university.country</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

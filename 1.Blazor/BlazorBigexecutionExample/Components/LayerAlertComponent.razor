@@ -1,0 +1,25 @@
+﻿
+
+<div class="layer_popup">
+    <div class="layer">
+        <div class="text_area">
+            <p>
+                @((MarkupString)Value)
+            </p>
+        </div>
+        <div class="btn_area">
+            <button @onclick="OK">확인</button>
+        </div>
+    </div>
+    <div class="dimmed"></div>
+</div>
+@code{
+    [Parameter]
+    public string Value { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+    private Task OK()
+    {
+        return OnClose.InvokeAsync();
+    }
+}
