@@ -22,7 +22,7 @@ namespace HR.LeaveManagement.BlazorUI.Services
         public async Task<Response<Guid>> ApproveLeaveRequest(int id, bool approved)
         {
             try
-            {
+            {                
                 var response = new Response<Guid>();
                 var request = new ChangeLeaveRequestApprovalCommand { Approved = approved, Id = id };
                 await _client.UpdateApprovalAsync(request);

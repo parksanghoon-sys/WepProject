@@ -25,10 +25,10 @@ namespace HR.LeaveManagement.Identity.Services
             var employee = await _userManager.FindByIdAsync(userId);
             return new Employee
             {
-                Email = employee.Email,
-                Id = employee.Id,
-                Firstname = employee.FirstName,
-                Lastname = employee.LastName
+                Email = employee?.Email,
+                Id = employee?.Id,
+                Firstname = employee?.FirstName,
+                Lastname = employee?.LastName
             };
         }
 
