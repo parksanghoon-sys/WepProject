@@ -69,9 +69,6 @@ namespace HR.LeaveManagement.BlazorUI.Services
         {
             throw new NotImplementedException();
         }
-
-
-
         public async Task<LeaveRequestVM> GetLeaveRequest(int id)
         {
             var leaveRequest =  await _client.LeaveRequestsGETAsync(id);
