@@ -78,7 +78,7 @@
                     }
                 </td>
                 <td>
-                    @if(item.Cancelled == false)
+                    @if(item.Cancelled == false && item.StartDate > DateTime.Now)
                     {
                         <button class="btn btn-danger" @onclick="(()=> CancelRequsetAsync(item.Id))">
                             <i class="fade fa-file"></i>Cancel Request
