@@ -1,0 +1,11 @@
+﻿@page "/"
+@using OnlineShop.Models
+@using OnlineShop.Services
+
+<PageTitle>Index</PageTitle>
+
+
+<SharedProductList Products="Products" DisplayBuyButton="true"></SharedProductList>
+@code {
+    public List<Product> Products { get; set; } = ProductProviderService.Products.ToList();
+}
