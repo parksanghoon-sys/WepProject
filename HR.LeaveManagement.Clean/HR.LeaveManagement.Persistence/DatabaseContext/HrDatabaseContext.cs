@@ -16,10 +16,10 @@ namespace HR.LeaveManagement.Persistence.DatabaseContext
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseMySQL("server=localhost;port=3306;database=YourDatabaseName;user=username;password=password");
-            }
+            //if (!optionsBuilder.IsConfigured)
+            //{
+            //    optionsBuilder.UseMySQL("server=localhost;port=3306;database=YourDatabaseName;user=username;password=password");
+            //}
         }
         /// <summary>
         /// 데이터 베이스 모델이 만들어 질때 오버라이드

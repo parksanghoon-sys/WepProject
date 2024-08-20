@@ -32,12 +32,17 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Commands.CancelLe
             leaveRequest.Cancelled = true;
             await _leaveRequestRepository.UpdateAsync(leaveRequest);
 
-            int daysRequested = (int)(leaveRequest.EndDate - leaveRequest.StartDate).TotalDays;
-            var allocation = await _leaveAllocationRepository.GetAllocations(leaveRequest.RequestingEmployeeId, leaveRequest.LeaveTypeId);
+            if(leaveRequest.Approved == true)
+            {
+                int daysRequested = (int)(leaveRequest.EndDate - leaveRequest.StartDate).TotalDays;
+                var allocation = await _leaveAllocationRepository.GetAllocations(leaveRequest.RequestingEmployeeId, leaveRequest.LeaveTypeId);
 
-            allocation.NumberOfDays += daysRequested;
+                allocation.NumberOfDays += daysRequested;
 
-            await _leaveAllocationRepository.UpdateAsync(allocation);
+                await _leaveAllocationRepository.UpdateAsync(allocation);
+                
+            }
+          
             // send confirmation email
             try
             {
