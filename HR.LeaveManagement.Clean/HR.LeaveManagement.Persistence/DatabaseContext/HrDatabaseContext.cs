@@ -1,4 +1,5 @@
-﻿using HR.LeaveManagement.Domain;
+﻿using HR.LeaveManagement.Application.Contracts.Identity;
+using HR.LeaveManagement.Domain;
 using HR.LeaveManagement.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,13 +7,15 @@ namespace HR.LeaveManagement.Persistence.DatabaseContext
 {
     public class HrDatabaseContext : DbContext
     {
+        private readonly IUserService _userService;
+
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
-        public HrDatabaseContext(DbContextOptions<HrDatabaseContext> options)
+        public HrDatabaseContext(DbContextOptions<HrDatabaseContext> options, IUserService userService)
             : base(options)
         {
-
+            _userService = userService;
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -58,9 +61,12 @@ namespace HR.LeaveManagement.Persistence.DatabaseContext
 
             {
                 entity.Entity.DateModified = DateTime.Now;
+                entity.Entity.ModifiedBy = _userService.UserId;
+
                 if(entity.State == EntityState.Added)
                 {
                     entity.Entity.DateCreated = DateTime.Now;
+                    entity.Entity.CreatedBy = _userService.UserId;
                 }
             }
             return base.SaveChangesAsync(cancellationToken);
