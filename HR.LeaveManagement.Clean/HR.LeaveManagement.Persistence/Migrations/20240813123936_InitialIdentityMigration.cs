@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
 
 #nullable disable
@@ -6,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace HR.LeaveManagement.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialIdentityMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -88,7 +89,7 @@ namespace HR.LeaveManagement.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
                 columns: new[] { "Id", "DateCreated", "DateModified", "DefaultDays", "Name" },
-                values: new object[] { 1, new DateTime(2024, 3, 17, 21, 9, 32, 24, DateTimeKind.Local).AddTicks(9261), new DateTime(2024, 3, 17, 21, 9, 32, 24, DateTimeKind.Local).AddTicks(9273), 10, "Vacation" });
+                values: new object[] { 1, new DateTime(2024, 8, 13, 21, 39, 36, 79, DateTimeKind.Local).AddTicks(6426), new DateTime(2024, 8, 13, 21, 39, 36, 79, DateTimeKind.Local).AddTicks(6440), 10, "Vacation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveAllocations_LeaveTypeId",

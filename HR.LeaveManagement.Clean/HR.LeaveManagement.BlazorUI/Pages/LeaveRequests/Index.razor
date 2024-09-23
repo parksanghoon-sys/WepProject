@@ -94,7 +94,7 @@
                     @item.DateRequested.ToString("yyyy-MM-dd")
                 </td>
                 <td>
-                    @if (item.Cancelled)
+                    @if (item.IsCancelled)
                     {
                         <span class="badge bg-secondary">Cancelled</span>
                     }
@@ -112,7 +112,7 @@
                     }
                 </td>
                 <td>
-                    @if (!item.Cancelled)
+                    @if (!item.IsCancelled)
                     {
                         <button class="btn btn-outline-primary" @onclick="(() => GoToDetails(item.Id))">
                             <i class="fa fa-file"></i>Review

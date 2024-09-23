@@ -203,9 +203,9 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<System.Text.Json.JsonSerializerOptions> _settings = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerSettings, true);
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public Client(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             _httpClient = httpClient;
         }
@@ -251,9 +251,9 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
-                    // Operation Path: "api/Auth/Login"
-                    urlBuilder_.Append("api/Auth/Login");
+
+                    // Operation Path: "api/Auth/login"
+                    urlBuilder_.Append("api/Auth/login");
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -333,7 +333,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/Auth/register"
                     urlBuilder_.Append("api/Auth/register");
 
@@ -411,7 +411,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveAllocations"
                     urlBuilder_.Append("api/LeaveAllocations");
                     urlBuilder_.Append('?');
@@ -498,7 +498,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveAllocations"
                     urlBuilder_.Append("api/LeaveAllocations");
 
@@ -584,7 +584,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveAllocations/{id}"
                     urlBuilder_.Append("api/LeaveAllocations/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -669,7 +669,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveAllocations/{id}"
                     urlBuilder_.Append("api/LeaveAllocations/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -769,7 +769,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveAllocations/{id}"
                     urlBuilder_.Append("api/LeaveAllocations/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -857,7 +857,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveRequests"
                     urlBuilder_.Append("api/LeaveRequests");
                     urlBuilder_.Append('?');
@@ -944,7 +944,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveRequests"
                     urlBuilder_.Append("api/LeaveRequests");
 
@@ -1040,7 +1040,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveRequests"
                     urlBuilder_.Append("api/LeaveRequests");
 
@@ -1140,7 +1140,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveRequests/{id}"
                     urlBuilder_.Append("api/LeaveRequests/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1221,7 +1221,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveRequests/{id}"
                     urlBuilder_.Append("api/LeaveRequests/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1312,7 +1312,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveRequests/CancelRequest"
                     urlBuilder_.Append("api/LeaveRequests/CancelRequest");
 
@@ -1412,7 +1412,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveRequests/UpdateApproval"
                     urlBuilder_.Append("api/LeaveRequests/UpdateApproval");
 
@@ -1509,7 +1509,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveTypes"
                     urlBuilder_.Append("api/LeaveTypes");
 
@@ -1591,7 +1591,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveTypes"
                     urlBuilder_.Append("api/LeaveTypes");
 
@@ -1692,7 +1692,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveTypes/{id}"
                     urlBuilder_.Append("api/LeaveTypes/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1777,7 +1777,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveTypes/{id}"
                     urlBuilder_.Append("api/LeaveTypes/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1877,7 +1877,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+
                     // Operation Path: "api/LeaveTypes/{id}"
                     urlBuilder_.Append("api/LeaveTypes/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2012,7 +2012,7 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -2024,13 +2024,13 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -2251,6 +2251,9 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
         [System.Text.Json.Serialization.JsonPropertyName("approved")]
         public bool? Approved { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("cancelled")]
+        public bool? Cancelled { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -2452,10 +2455,10 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
 
 }
 
-#pragma warning restore  108
-#pragma warning restore  114
-#pragma warning restore  472
-#pragma warning restore  612
+#pragma warning restore 108
+#pragma warning restore 114
+#pragma warning restore 472
+#pragma warning restore 612
 #pragma warning restore 1573
 #pragma warning restore 1591
 #pragma warning restore 8073

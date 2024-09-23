@@ -13,6 +13,6 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Queries.GetLeaveR
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool? Approved { get; set; }
-        public bool? Cancelled { get; set; }
+        public bool? IsCancelled { get; set; }
     }
 }

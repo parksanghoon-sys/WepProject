@@ -1,4 +1,5 @@
-﻿using HR.LeaveManagement.BlazorUI.Contracts;
+﻿using Blazored.Toast.Services;
+using HR.LeaveManagement.BlazorUI.Contracts;
 using HR.LeaveManagement.BlazorUI.Models.LeaveTypes;
 using Microsoft.AspNetCore.Components;
 
@@ -8,7 +9,8 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
     {
         [Inject]
         ILeaveTypeService _client { get; set; }
-
+        [Inject]
+        IToastService _toastService { get; set; }
         [Parameter]
         public int id { get; set; }
 
@@ -16,6 +18,7 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
 
         protected async override Task OnParametersSetAsync()
         {
+
             leaveType = await _client.GetLeaveTypeDetails(id);
         }
     }
