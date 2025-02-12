@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "ShowJoke"; 
+}
+<h1>@ViewData["Title"]</h1>
+
+@model Dictionary<string, string>
+<table class="table table-bordered tablesmall table-striped">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>

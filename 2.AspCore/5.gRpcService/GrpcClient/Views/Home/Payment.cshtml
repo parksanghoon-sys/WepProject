@@ -1,0 +1,17 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Payment Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Payment Page</h1>
+    <p class="display-6">Enter Amount and click the button to process the payment.</p>
+    <h2 class="display-7">@Model</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <input name="amount" type="text" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
